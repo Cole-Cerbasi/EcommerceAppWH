@@ -1,0 +1,8 @@
+.card-wh-image {
+  height: 120px;
+  width: auto;
+  object-fit: cover;
+}
+.text-badprice{
+  color: #d66b6b;
+}

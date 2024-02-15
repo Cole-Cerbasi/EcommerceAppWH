@@ -1,0 +1,15 @@
+<div id="whcarousel" class="carousel slide sp-x">
+  <div class="carousel-inner">
+
+    <div class="carousel-item" *ngFor="let i of cards; let cardIndex = index" [class.active] = "cardIndex === 0">
+      <app-whcard [cardData] = "i"/>
+    </div>
+
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#whcarousel" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#whcarousel" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+  </button>
+</div>

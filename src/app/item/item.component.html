@@ -1,0 +1,10 @@
+
+<div class="card w-100">
+  <img src="{{ itemData.image }}" class="card-img-top card-wh-image">
+  <div class="card-body">
+    <h4 class="card-title">{{ itemData.title }}</h4>
+    <h5 class="card-subtitle mb-2">${{ itemData.price }} <small class="text-muted"><s class="text-badprice">${{ itemData.oldpr }}</s></small></h5>
+    <p class="card-text">{{ itemData.descr }} <i class="fa fa-star" aria-hidden="true"></i> <small class="mx-3 text-muted">{{ itemData.review }} reviews</small></p>
+    <button class="btn btn-outline-primary btn-sm">View Offers</button>
+  </div>
+</div>

@@ -1,0 +1,21 @@
+.subtle-underline{
+  border: 0;
+  border-radius: 0px;
+  border-bottom: 1px solid #fff;
+  background-color: inherit;
+  transition: 0.2s;
+}
+.subtle-underline:hover{
+  border-bottom: 1px solid #000;
+  transition: 0.2s;
+}
+.navbar-custom {
+  background-color: #fff;
+}
+.searchbar-custom {
+  background-color: #fafafa;
+}
+.sp-x{
+  padding-right: 15%;
+  padding-left: 15%;
+}
