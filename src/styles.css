@@ -1,1 +1,10 @@
 /* You can add global styles to this file, and also import other style files */
+.sp-x{
+  padding-right: 15%;
+  padding-left: 15%;
+}
+
+.mp-x {
+  padding-right: 22%;
+  padding-left: 22%;
+}
