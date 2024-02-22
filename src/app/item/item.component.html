@@ -4,7 +4,82 @@
   <div class="card-body">
     <h4 class="card-title">{{ itemData.title }}</h4>
     <h5 class="card-subtitle mb-2">${{ itemData.price }} <small class="text-muted"><s class="text-badprice">${{ itemData.oldpr }}</s></small></h5>
-    <p class="card-text">{{ itemData.descr }} <i class="fa fa-star" aria-hidden="true"></i> <small class="mx-3 text-muted">{{ itemData.review }} reviews</small></p>
-    <button class="btn btn-outline-primary btn-sm">View Offers</button>
+    <p class="card-text">{{ itemData.descr }} <i class="fa fa-star" aria-hidden="true"></i> <small class="mx-3 text-muted">{{ itemData.review }} reviews</small> <span class="badge bg-success mr-1 rounded">{{ itemData.disfreq }}</span></p>
+    <button class="btn btn-outline-primary btn-sm" data-bs-toggle="modal" [attr.data-bs-target]="'#' + itemData.specid">View Offers</button>
+  </div>
+</div>
+<!-- inspect -->
+<div class="modal fade" id="{{ itemData.specid }}" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">{{ itemData.title }}</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="container-fluid">
+
+          <div class="row mb-2">
+            <div class="col-sm-6">
+              <small class="text-muted">
+                Preview
+              </small>
+            </div>
+            <div class="col-sm-6 text-end">
+              <small class="text-muted">
+                Locations Available
+              </small>
+            </div>
+          </div>
+
+          <div class="row border-bottom mb-1">
+            <div class="col-sm-6">
+              <img src="{{ itemData.image }}" class="modal-image">
+            </div>
+            <div class="col-sm-6 text-end">
+
+              <button class="btn subtle-underline w-100 text-end">
+                West Orange Comics and Video Games <i class="fa fa-external-link" aria-hidden="true"></i>
+              </button>
+              <button class="btn subtle-underline w-100 text-end">
+                Happy Troll Games <i class="fa fa-external-link" aria-hidden="true"></i>
+              </button>
+              <button class="btn subtle-underline w-100 text-end">
+                Warhammer <i class="fa fa-external-link" aria-hidden="true"></i>
+              </button>
+              <button class="btn subtle-underline w-100 text-end" onclick="window.open('https://laytongaming.com/collections/40k/products/warhammer-40k-astra-milatarum-lord-solar-leontus', '_blank').focus()">
+                Layton Gaming <i class="fa fa-external-link" aria-hidden="true"></i>
+              </button>
+              <button class="btn subtle-underline w-100 text-end">
+                The Haven Tabletop Games <i class="fa fa-external-link" aria-hidden="true"></i>
+              </button>
+
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-sm-12">
+              <h5 class="card-subtitle mb-2">${{ itemData.price }} <small class="text-muted"><s class="text-badprice">${{ itemData.oldpr }}</s></small></h5>
+            </div>
+          </div>
+
+          <div class="row mb-2">
+            <div class="col-sm-12">
+              <p class="card-text">{{ itemData.descr }} <i class="fa fa-star" aria-hidden="true"></i> <small class="mx-3 text-muted">{{ itemData.review }} reviews</small> <span class="badge bg-success mr-1 rounded">{{ itemData.disfreq }}</span></p>
+            </div>
+          </div>
+
+          <div class="row mb-2">
+            <div class="col-sm-12">
+              <p class="card-text">{{ itemData.product_description }}</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
   </div>
 </div>

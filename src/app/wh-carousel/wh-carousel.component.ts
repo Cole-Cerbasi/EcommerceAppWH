@@ -42,91 +42,105 @@ export class WhCarouselComponent {
       //test api I was using wasnt array, just needed it to see if the result would come through
       var list = [
         {
-          title: "Item 1",
+          title: "Lord Solar Leontus",
           descr: "5",
           price: "20.00",
           oldpr: "45.00",
-          review: "3",
-          image: "https://cdn-icons-png.freepik.com/512/4601/4601560.png"
+          review: "27",
+          disfreq: "2",
+          product_description: "Test product description. More of these will be put into the database later and get pulled via API.",
+          image: "https://www.warhammer.com/app/resources/catalog/product/920x950/99120105095_AMLordSolarLeontus01.jpg"
         },
         {
-          title: "test 2",
-          descr: "5",
+          title: "D&D Underdark Paint Set",
+          descr: "4.4",
           price: "22.00",
           oldpr: "45.00",
-          review: "3",
-          image: "https://cdn-icons-png.freepik.com/512/4601/4601560.png"
+          review: "93",
+          disfreq: "1",
+          product_description: "Test product description. More of these will be put into the database later and get pulled via API.",
+          image: "https://cdn.shoplightspeed.com/shops/635851/files/30927628/image.jpg"
         },
         {
-          title: "test 3",
-          descr: "5",
+          title: "Battle Systems: Fantasy",
+          descr: "4.8",
           price: "13.00",
           oldpr: "45.00",
-          review: "5",
-          image: "https://cdn-icons-png.freepik.com/512/4601/4601560.png"
+          review: "35",
+          disfreq: "0",
+          product_description: "Modular fantasy terrain for 28mm miniatures.",
+          image: "https://m.media-amazon.com/images/I/81Bvk86d2xS._AC_UF894,1000_QL80_.jpg"
         },
         {
-          title: "test 4",
+          title: "Product Four",
           descr: "5",
           price: "40.00",
           oldpr: "85.00",
           review: "33",
+          disfreq: "0",
           image: "https://cdn-icons-png.freepik.com/512/4601/4601560.png"
         },
         {
-          title: "test 5",
+          title: "Product Five",
           descr: "5",
           price: "10.00",
           oldpr: "25.00",
           review: "5",
+          disfreq: "0",
           image: "https://cdn-icons-png.freepik.com/512/4601/4601560.png"
         },
         {
-          title: "test 6",
+          title: "Product Six",
           descr: "5",
           price: "40.00",
           oldpr: "42.00",
           review: "19",
+          disfreq: "0",
           image: "https://cdn-icons-png.freepik.com/512/4601/4601560.png"
         },
         {
-          title: "test 7",
+          title: "Product Seven",
           descr: "5",
           price: "23.00",
           oldpr: "47.00",
           review: "23",
+          disfreq: "0",
           image: "https://cdn-icons-png.freepik.com/512/4601/4601560.png"
         },
         {
-          title: "test 8",
+          title: "Product Eight",
           descr: "5",
           price: "23.00",
           oldpr: "25.00",
           review: "50",
+          disfreq: "0",
           image: "https://cdn-icons-png.freepik.com/512/4601/4601560.png"
         },
         {
-          title: "test 9",
+          title: "Product Nine",
           descr: "5",
           price: "20.00",
           oldpr: "45.00",
           review: "40",
+          disfreq: "0",
           image: "https://cdn-icons-png.freepik.com/512/4601/4601560.png"
         },
         {
-          title: "test 10",
+          title: "Product Ten",
           descr: "5",
           price: "20.00",
           oldpr: "45.00",
           review: "50",
+          disfreq: "0",
           image: "https://cdn-icons-png.freepik.com/512/4601/4601560.png"
         },
         {
-          title: "test 11",
+          title: "Product Eleven",
           descr: "5",
           price: "20.00",
           oldpr: "45.00",
           review: "68",
+          disfreq: "0",
           image: "https://cdn-icons-png.freepik.com/512/4601/4601560.png"
         }
       ]

@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-item',
@@ -9,5 +9,17 @@ export class ItemComponent {
   @Input() itemData: any;
   constructor(){
     this.itemData = {};
+  }
+  ngOnInit(): void{
+    this.itemData.specid = btoa(this.itemData.title.toLowerCase()).replace(/[=\s]/g, "");
+
+    const dmp: { [key: string]: string } = {
+      "2": "Rarely Discounted",
+      "1": "",
+      "0": ""
+    };
+
+    this.itemData.disfreq = dmp[this.itemData.disfreq as keyof typeof dmp];
+
   }
 }

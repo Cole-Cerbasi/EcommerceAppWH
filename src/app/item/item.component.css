@@ -6,3 +6,19 @@
 .text-badprice{
   color: #d66b6b;
 }
+.subtle-underline{
+  border: 0;
+  border-radius: 0px;
+  border-bottom: 1px solid #fff;
+  background-color: inherit;
+  transition: 0.2s;
+}
+.subtle-underline:hover{
+  border-bottom: 1px solid #000;
+  transition: 0.2s;
+}
+.modal-image {
+  height: 320px;
+  width: auto;
+  object-fit: cover;
+}

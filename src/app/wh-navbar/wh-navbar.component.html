@@ -8,6 +8,18 @@
     </button>
     <div class="collapse navbar-collapse" id="navbar-stuff">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0 w-100">
+        <li class="nav-item w-25 mx-4">
+          <div class="input-group w-100">
+            <input type="search" class="form-control subtle-underline searchbar-custom" id="item_search" placeholder="Search" (input)="updateContent($event)" (focus)="openCollapse()" (blur)="closeCollapse()">
+            <span class="" style="padding: 0px;">
+              <button class="btn subtle-underline" (click)="search()"><i class="fa fa-search" aria-hidden="true"></i></button>
+            </span>
+            <div id="collapseSearch" [ngClass]="{ 'show': isCollapseOpen }" class="collapse position-absolute mt-2 w-100 top-100 start-0 border bg-white shadow p-3">
+              <h5 class="mb-5">{{ inputValue }}</h5>
+              <small class="border-top pt-2 w-100"><a href="#">best deals</a> <a href="#" class="mx-4">sign up</a> <a href="#">game nights</a></small>
+            </div>
+          </div>
+        </li>
         <li class="nav-item">
           <button class="btn subtle-underline mx-1 nav-link">Home</button>
         </li>
@@ -16,15 +28,6 @@
         </li>
         <li class="nav-item">
           <button class="btn subtle-underline mx-1 nav-link">Deals</button>
-        </li>
-        <!-- this fills remaining space-->
-        <li class="nav-item w-100 text-end">
-          <div class="input-group m-auto w-50">
-            <input type="search" class="form-control subtle-underline searchbar-custom" id="item_search" placeholder="Search">
-            <span class="" style="padding: 0px;">
-              <button class="btn subtle-underline"><i class="fa fa-search" aria-hidden="true"></i></button>
-            </span>
-          </div>
         </li>
       </ul>
     </div>

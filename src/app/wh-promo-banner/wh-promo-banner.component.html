@@ -1,12 +1,52 @@
 <div class="row w-100 mp-x">
-  <div class="container-fluid p-5 mt-5 rounded shadow" style="height: 200px;">
+  <div class="container-fluid p-5 mt-5 rounded shadow" style="height: 230px;">
     <div class="row">
       <div class="col-sm-3">
-        <img class="promo-image-icon" src="https://static.thenounproject.com/png/603570-200.png">
+        <img class="promo-image-icon promoRoate" src="https://static.thenounproject.com/png/603570-200.png">
       </div>
       <div class="col-sm-9 text-center">
         <h1>Sign-Up Today For Aamazing Deals</h1>
-        <button class="btn mt-3 btn-lg btn-outline-primary btn-primary-outglow">Sign Up Now!</button>
+        <h6 class="text-muted">Newsletters, price alerts, and more!</h6>
+        <button class="btn mt-3 btn-lg btn-outline-primary btn-primary-outglow" data-bs-toggle="modal" data-bs-target="#signupForm">Sign Up Now!</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="signupForm" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5 text-center" id="exampleModalLabel"> Sign Up</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="mb-3">
+            <label for="modal-email" class="form-label">Email address</label>
+            <input type="email" class="form-control" id="modal-email">
+          </div>
+          <div class="mb-3">
+            <label for="modal-password" class="form-label">Password</label>
+            <input type="password" class="form-control" id="modal-password">
+          </div>
+          <div class="mb-3">
+            <label for="modal-password-confirm" class="form-label">Confirm Password</label>
+            <input type="password" class="form-control" id="modal-password-confirm">
+          </div>
+          <div class="mb-3 form-check">
+            <input type="checkbox" class="form-check-input" id="agreed-tos">
+            <label class="form-check-label">I agree to the <a href="#">terms of service.</a></label>
+          </div>
+          <div class="mb-3 form-check">
+            <input type="checkbox" class="form-check-input" id="newsletter">
+            <label class="form-check-label">I would like to recieve news and promos</label>
+          </div>
+          <button type="submit" class="btn btn-primary">Sign-up</button>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
       </div>
     </div>
   </div>
