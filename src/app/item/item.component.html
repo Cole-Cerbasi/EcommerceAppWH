@@ -1,10 +1,10 @@
 
 <div class="card w-100">
-  <img src="{{ itemData.image }}" class="card-img-top card-wh-image">
+  <img src="{{ itemData.img_src }}" class="card-img-top card-wh-image">
   <div class="card-body">
-    <h4 class="card-title">{{ itemData.title }}</h4>
-    <h5 class="card-subtitle mb-2">${{ itemData.price }} <small class="text-muted"><s class="text-badprice">${{ itemData.oldpr }}</s></small></h5>
-    <p class="card-text">{{ itemData.descr }} <i class="fa fa-star" aria-hidden="true"></i> <small class="mx-3 text-muted">{{ itemData.review }} reviews</small> <span class="badge bg-success mr-1 rounded">{{ itemData.disfreq }}</span></p>
+    <h4 class="card-title">{{ itemData.name }}</h4>
+    <h5 class="card-subtitle mb-2">${{ itemData.price_discounted }} <small class="text-muted"><s class="text-badprice">${{ itemData.price_original }}</s></small></h5>
+    <p class="card-text">{{ itemData.rating }} <i class="fa fa-star" aria-hidden="true"></i> <small class="mx-3 text-muted">{{ itemData.reviews }} reviews</small> <span class="badge bg-success mr-1 rounded">{{ itemData.disfreq }}</span></p>
     <button class="btn btn-outline-primary btn-sm" data-bs-toggle="modal" [attr.data-bs-target]="'#' + itemData.specid">View Offers</button>
   </div>
 </div>
@@ -13,7 +13,7 @@
   <div class="modal-dialog modal-lg modal-dialog-centered">
     <div class="modal-content">
       <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">{{ itemData.title }}</h1>
+        <h1 class="modal-title fs-5" id="exampleModalLabel">{{ itemData.name }}</h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
@@ -34,7 +34,7 @@
 
           <div class="row border-bottom mb-1">
             <div class="col-sm-6">
-              <img src="{{ itemData.image }}" class="modal-image">
+              <img src="{{ itemData.img_src }}" class="modal-image">
             </div>
             <div class="col-sm-6 text-end">
 
@@ -59,19 +59,19 @@
 
           <div class="row">
             <div class="col-sm-12">
-              <h5 class="card-subtitle mb-2">${{ itemData.price }} <small class="text-muted"><s class="text-badprice">${{ itemData.oldpr }}</s></small></h5>
+              <h5 class="card-subtitle mb-2">${{ itemData.price_discounted }} <small class="text-muted"><s class="text-badprice">${{ itemData.price_original }}</s></small></h5>
             </div>
           </div>
 
           <div class="row mb-2">
             <div class="col-sm-12">
-              <p class="card-text">{{ itemData.descr }} <i class="fa fa-star" aria-hidden="true"></i> <small class="mx-3 text-muted">{{ itemData.review }} reviews</small> <span class="badge bg-success mr-1 rounded">{{ itemData.disfreq }}</span></p>
+              <p class="card-text">{{ itemData.rating }} <i class="fa fa-star" aria-hidden="true"></i> <small class="mx-3 text-muted">{{ itemData.reviews }} reviews</small> <span class="badge bg-success mr-1 rounded">{{ itemData.disfreq }}</span></p>
             </div>
           </div>
 
           <div class="row mb-2">
             <div class="col-sm-12">
-              <p class="card-text">{{ itemData.product_description }}</p>
+              <p class="card-text">{{ itemData.description }}</p>
             </div>
           </div>
 

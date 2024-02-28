@@ -11,7 +11,7 @@ export class ItemComponent {
     this.itemData = {};
   }
   ngOnInit(): void{
-    this.itemData.specid = btoa(this.itemData.title.toLowerCase()).replace(/[=\s]/g, "");
+    this.itemData.specid = this.itemData.idwh_item+btoa(this.itemData.name.toLowerCase()).replace(/[=\s]/g, "");
 
     const dmp: { [key: string]: string } = {
       "2": "Rarely Discounted",

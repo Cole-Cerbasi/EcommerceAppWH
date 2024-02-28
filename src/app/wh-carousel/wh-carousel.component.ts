@@ -145,9 +145,10 @@ export class WhCarouselComponent {
         }
       ]
 
-      var slides = this.chunkArray(list, 4);
-      console.log(slides);
+      //var slides = this.chunkArray(list, 4);
+      //console.log(slides);
 
+      var slides = this.chunkArray(r, 4);
       this.cards = slides;
       console.log("whcarousel api: "+JSON.stringify(r)); //test result
     });
