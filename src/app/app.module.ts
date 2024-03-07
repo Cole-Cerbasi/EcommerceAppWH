@@ -12,6 +12,7 @@ import { WhCarouselComponent } from './wh-carousel/wh-carousel.component';
 import { ApiService } from './service/api.service';
 import { ItemComponent } from './item/item.component';
 import { WhPromoBannerComponent } from './wh-promo-banner/wh-promo-banner.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { WhPromoBannerComponent } from './wh-promo-banner/wh-promo-banner.compon
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [ApiService],
   bootstrap: [AppComponent]

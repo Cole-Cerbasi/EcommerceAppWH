@@ -21,29 +21,32 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <form>
+        <div>
           <div class="mb-3">
             <label for="modal-email" class="form-label">Email address</label>
-            <input type="email" class="form-control" id="modal-email">
+            <input type="email" [(ngModel)]="formData.email" class="form-control" id="modal-email" required>
+            <label class="form-label text-danger" *ngIf="!isEmailGood()">This is not a valid email.</label>
           </div>
           <div class="mb-3">
             <label for="modal-password" class="form-label">Password</label>
-            <input type="password" class="form-control" id="modal-password">
+            <input type="password" [(ngModel)]="formData.password" class="form-control" id="modal-password" required>
+            <label class="form-label text-danger" *ngIf="!isPasswordGood()">Password must be 4 letters long and contain a number or symbol</label>
           </div>
           <div class="mb-3">
             <label for="modal-password-confirm" class="form-label">Confirm Password</label>
-            <input type="password" class="form-control" id="modal-password-confirm">
+            <input type="password" [(ngModel)]="formData.confirm_password" class="form-control" id="modal-password-confirm" required>
+            <label class="form-label text-danger" *ngIf="!isConfirmPasswordGood()">Password Does Not Match</label>
           </div>
           <div class="mb-3 form-check">
-            <input type="checkbox" class="form-check-input" id="agreed-tos">
+            <input type="checkbox" [(ngModel)]="formData.agreeTOS" class="form-check-input" id="agreed-tos" required>
             <label class="form-check-label">I agree to the <a href="#">terms of service.</a></label>
           </div>
           <div class="mb-3 form-check">
             <input type="checkbox" class="form-check-input" id="newsletter">
             <label class="form-check-label">I would like to recieve news and promos</label>
           </div>
-          <button type="submit" class="btn btn-primary">Sign-up</button>
-        </form>
+          <button type="submit" class="btn btn-primary" (click)="postData()" [disabled]="!isFormGood()">Sign-up</button>
+        </div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>

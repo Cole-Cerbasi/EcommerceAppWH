@@ -1,8 +1,10 @@
 
 const express = require('express');
 const mysql = require('mysql');
+const bodyParser = require('body-parser');
 const cors = require('cors');
 const app = express();
+app.use(bodyParser.json());
 
 const coroption = {
   origin: ['http://localhost:4200'],
@@ -29,6 +31,21 @@ app.get('/api/items', (req, res)=>{
         throw err;
       }
       res.json(re);
+    });
+});
+
+app.post('/api/signup', (req, res)=>{
+    console.log("api hit");
+    console.log(req);
+    var POST_DATA = req.body;
+    const email = connection.escape(POST_DATA.email);
+    const password = connection.escape(POST_DATA.password);
+    const promo = connection.escape(POST_DATA.allow_promo);
+    connection.query(`INSERT INTO user_data (email, password, accept_promo) VALUES (${email}, ${password}, ${promo});`, (err, re)=>{
+      if(err){
+        throw err;
+      }
+      res.json(["completed."]);
     });
 });
 
