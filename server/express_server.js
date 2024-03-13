@@ -25,18 +25,38 @@ let connection = mysql.createConnection({
 });
 connection.connect();
 
-app.get('/api/items', (req, res)=>{
-    connection.query('SELECT * FROM wh_items', (err, re)=>{
-      if(err){
-        throw err;
+app.post('/api/product', (req, res)=>{
+    var POST_DATA = req.body;
+    const search = `%${POST_DATA.search}%`;
+    connection.query('SELECT name FROM wh_items WHERE name LIKE ?', [search], (err, re) => {
+      if (err) {
+        console.log(err);
       }
       res.json(re);
     });
 });
 
+//testing two queries
+app.get('/api/items', (req, res)=>{
+    connection.query('SELECT * FROM wh_items', (err, re)=>{
+      if(err) throw err;
+      //running second thing
+      let linkp = re.map(item=>{
+        return new Promise((res, rej)=>{
+          let item_id = item.idwh_items;
+          connection.query(`SELECT link.* FROM item_links link JOIN wh_items items ON link.idwh_item = items.idwh_items WHERE items.idwh_items = ${item_id}`, (err, re)=>{
+            if(err) rej(err);
+            item.links = re;
+            res(item);
+          });
+        });
+      });
+      //wait, then send
+      Promise.all(linkp).then(linked_items => res.json(linked_items) ).catch(err=>{throw err});
+    });
+});
+
 app.post('/api/signup', (req, res)=>{
-    console.log("api hit");
-    console.log(req);
     var POST_DATA = req.body;
     const email = connection.escape(POST_DATA.email);
     const password = connection.escape(POST_DATA.password);

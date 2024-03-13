@@ -15,7 +15,7 @@
               <button class="btn subtle-underline" (click)="search()"><i class="fa fa-search" aria-hidden="true"></i></button>
             </span>
             <div id="collapseSearch" [ngClass]="{ 'show': isCollapseOpen }" class="collapse position-absolute mt-2 w-100 top-100 start-0 border bg-white shadow p-3">
-              <h5 class="mb-5">{{ inputValue }}</h5>
+              <h5 class="mb-5" [innerHTML]="inputValue"></h5>
               <small class="border-top pt-2 w-100"><a href="#">best deals</a> <a href="#" class="mx-4">sign up</a> <a href="#">game nights</a></small>
             </div>
           </div>
