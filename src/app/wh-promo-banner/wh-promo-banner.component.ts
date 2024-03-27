@@ -1,5 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { GETFormServiceService } from '../service/get-form-service.service';
+import { LoginService } from '../service/login.service';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-wh-promo-banner',
@@ -7,7 +9,10 @@ import { GETFormServiceService } from '../service/get-form-service.service';
   styleUrl: './wh-promo-banner.component.css'
 })
 export class WhPromoBannerComponent {
-  constructor(private getForm: GETFormServiceService){}
+
+  notLoggedIn: boolean = true;
+
+  constructor(private getForm: GETFormServiceService, private getLogin: LoginService, private cookie: CookieService){}
 
   formData = {
     email: "",
@@ -15,6 +20,14 @@ export class WhPromoBannerComponent {
     allow_promo: false,
     confirm_password: "",
     agreeTOS: false,
+  }
+
+  ngOnInit(): void{
+
+    if(this.cookie.get("uat") != ''){
+      this.notLoggedIn = false;
+    }
+
   }
 
   isPasswordGood(): boolean {
@@ -33,15 +46,26 @@ export class WhPromoBannerComponent {
     return this.isPasswordGood() && this.isEmailGood() && this.isTOSCheckGood();
   }
 
+  refreshPage(){
+    window.location.reload();
+  }
+
   postData(){
     const data = {
       email: this.formData.email,
       password: this.formData.password,
       allow_promo: this.formData.allow_promo,
     }
+
     console.log("submitted");
     this.getForm.postData(data).subscribe((r)=>{
-      console.log("success");
+
+      //login and get token
+      this.getLogin.postData(data).subscribe((r)=>{
+        this.cookie.set("uat", r[0]);
+        this.refreshPage();
+      });
+
     },(e)=>{
       console.warn("Something didn't go right "+e);
     });

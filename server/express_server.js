@@ -3,6 +3,7 @@ const express = require('express');
 const mysql = require('mysql');
 const bodyParser = require('body-parser');
 const cors = require('cors');
+const {v4: uuidv4} = require('uuid');
 const app = express();
 app.use(bodyParser.json());
 
@@ -33,6 +34,23 @@ app.post('/api/product', (req, res)=>{
         console.log(err);
       }
       res.json(re);
+    });
+});
+
+app.post('/api/login', (req, res)=>{
+    var POST_DATA = req.body;
+    const email = connection.escape(POST_DATA.email);
+    const password = connection.escape(POST_DATA.password);
+
+    //creating new token
+    const gentoken = uuidv4();
+    connection.query('UPDATE user_data SET auth_token = ? WHERE password = ? AND email = ?;', [gentoken, password, email], (err, re) => {
+      if (err) {
+        console.log(err);
+      }
+      res.json([
+        gentoken
+      ]);
     });
 });
 

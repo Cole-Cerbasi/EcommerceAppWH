@@ -49,11 +49,6 @@ export class WhNavbarComponent {
       this.inputValue = "Search For Anything";
     }
 
-    /*
-    if (event && event.target) {
-      this.inputValue = event.target.value === "" ? "Search For Anything" : event.target.value + " not found.";
-    }
-    */
   }
 
   search(){
