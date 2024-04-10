@@ -39,18 +39,27 @@ app.post('/api/product', (req, res)=>{
 
 app.post('/api/login', (req, res)=>{
     var POST_DATA = req.body;
-    const email = connection.escape(POST_DATA.email);
-    const password = connection.escape(POST_DATA.password);
+    const email = POST_DATA.email;
+    const password = POST_DATA.password;
+
+    console.log("login attempt with: "+email+", "+password);
 
     //creating new token
     const gentoken = uuidv4();
-    connection.query('UPDATE user_data SET auth_token = ? WHERE password = ? AND email = ?;', [gentoken, password, email], (err, re) => {
+    var c = connection.query('UPDATE user_data SET auth_token = ? WHERE password = ? AND email = ?', [gentoken, password, email], (err, re) => {
       if (err) {
         console.log(err);
       }
-      res.json([
-        gentoken
-      ]);
+      console.log(c.sql);
+      if(re.changedRows == 0){
+        res.json([
+          'bad'
+        ]);
+      }else{
+        res.json([
+          gentoken
+        ]);
+      }
     });
 });
 

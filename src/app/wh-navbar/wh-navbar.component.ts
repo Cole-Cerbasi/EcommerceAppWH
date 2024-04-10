@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { APISearchService } from '../service/api_search.service';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
+import { LoginService } from '../service/login.service';
+import { CookieService } from 'ngx-cookie-service';
 
 interface Result {
   name: string;
@@ -13,9 +15,17 @@ interface Result {
 })
 export class WhNavbarComponent {
   isCollapseOpen = false;
+  isLoginGood = true;
+  loggingIn = false;
+  notLoggedIn: boolean = true;
   inputValue: SafeHtml = "Search For Anything";
 
-  constructor(private APISearchService: APISearchService, private sanitizer: DomSanitizer) {}
+  formData = {
+    email: "",
+    password: ""
+  }
+
+  constructor(private APISearchService: APISearchService, private sanitizer: DomSanitizer, private getLogin: LoginService, private cookie: CookieService) {}
 
   openCollapse() {
     this.isCollapseOpen = true;
@@ -53,5 +63,44 @@ export class WhNavbarComponent {
 
   search(){
     //nothing here for now, no page to go to
+  }
+
+  loginIsGood(){
+    return this.isLoginGood;
+  }
+
+  refreshPage(){
+    window.location.reload();
+  }
+
+  logOut(){
+    this.cookie.delete("uat");
+    this.refreshPage();
+  }
+
+  logIn(){
+    this.loggingIn = true;
+    const data = {
+      email: this.formData.email,
+      password: this.formData.password,
+    }
+    this.getLogin.postData(data).subscribe((r)=>{
+      console.log(r[0]);
+      if(r[0] != "bad"){
+        this.cookie.set("uat", r[0]);
+        this.refreshPage();
+      }else{
+        this.isLoginGood = false;
+        this.loggingIn = false;
+      }
+    });
+  }
+
+  ngOnInit(): void{
+
+    if(this.cookie.get("uat") != ''){
+      this.notLoggedIn = false;
+    }
+
   }
 }

@@ -29,7 +29,48 @@
         <li class="nav-item">
           <button class="btn subtle-underline mx-1 nav-link">Deals</button>
         </li>
+        <li class="nav-item ms-auto" *ngIf="notLoggedIn">
+          <button class="btn subtle-underline mx-1 nav-link" data-bs-toggle="modal" data-bs-target="#loginForm">Log In <i class="fa fa-sign-in" aria-hidden="true"></i></button>
+        </li>
+
+        <li class="nav-item dropdown ms-auto" *ngIf="!notLoggedIn">
+          <a class="nav-link dropdown-toggle subtle-underline" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Account
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#">Account Settings</a></li>
+            <li><a class="dropdown-item" href="#">My Reviews</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="#" (click)="logOut()">Logout</a></li>
+          </ul>
+        </li>
+
       </ul>
     </div>
   </div>
 </nav>
+
+<div class="modal fade" id="loginForm" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5 text-center" id="login-modal"> Log in</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div>
+          <div class="mb-3">
+            <label for="modal-email" class="form-label">Email address</label>
+            <input type="email" [(ngModel)]="formData.email" class="form-control" id="modal-login-email" required>
+          </div>
+          <div class="mb-3">
+            <label for="modal-password" class="form-label">Password</label>
+            <input type="password" [(ngModel)]="formData.password" class="form-control" id="modal-login-password" required>
+          </div>
+          <button type="submit" class="btn btn-primary" (click)="logIn()" [disabled]="loggingIn"> <span *ngIf="!loggingIn">Log in</span> <i class="fa fa-cog fa-spin" aria-hidden="true" *ngIf="loggingIn"></i></button>
+          <br><label class="form-label text-danger" *ngIf="!loginIsGood()">Incorrect Email or Password.</label>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
