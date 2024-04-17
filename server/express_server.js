@@ -71,7 +71,7 @@ app.get('/api/items', (req, res)=>{
       let linkp = re.map(item=>{
         return new Promise((res, rej)=>{
           let item_id = item.idwh_items;
-          connection.query(`SELECT link.* FROM item_links link JOIN wh_items items ON link.idwh_item = items.idwh_items WHERE items.idwh_items = ${item_id}`, (err, re)=>{
+          connection.query(`SELECT link.* FROM item_links link JOIN wh_items items ON link.idwh_item = items.idwh_items WHERE items.idwh_items = ?`, [item_id], (err, re)=>{
             if(err) rej(err);
             item.links = re;
             res(item);
@@ -88,7 +88,7 @@ app.post('/api/signup', (req, res)=>{
     const email = connection.escape(POST_DATA.email);
     const password = connection.escape(POST_DATA.password);
     const promo = connection.escape(POST_DATA.allow_promo);
-    connection.query(`INSERT INTO user_data (email, password, accept_promo) VALUES (${email}, ${password}, ${promo});`, (err, re)=>{
+    connection.query(`INSERT INTO user_data (email, password, accept_promo) VALUES (?, ?, ?);`, [email, password, promo], (err, re)=>{
       if(err){
         throw err;
       }

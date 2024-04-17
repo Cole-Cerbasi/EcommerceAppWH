@@ -29,6 +29,6 @@ export class ItemComponent {
   ngAfterViewInit(){
     this.link = this.itemData.links;
     console.log(this.linkcontainer);
-    this.linkcontainer.nativeElement.innerHTML = this.link.map(link => `<button class="btn subtle-underline w-100 text-end" onclick="window.open('${link.link}', '_blank').focus()">${link.link_name} <i class="fa fa-external-link" aria-hidden="true"></i></button>`).join(' ');
+    this.linkcontainer.nativeElement.innerHTML = this.link.map(link => `<button class="btn btn-sm subtle-underline w-100 text-end" onclick="window.open('${link.link}', '_blank').focus()">${link.link_name} <i class="fa fa-external-link" aria-hidden="true"></i></button>`).join(' ');
   }
 }
