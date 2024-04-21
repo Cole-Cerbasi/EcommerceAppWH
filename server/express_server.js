@@ -88,7 +88,7 @@ app.post('/api/signup', (req, res)=>{
     const email = connection.escape(POST_DATA.email);
     const password = connection.escape(POST_DATA.password);
     const promo = connection.escape(POST_DATA.allow_promo);
-    connection.query(`INSERT INTO user_data (email, password, accept_promo) VALUES (?, ?, ?);`, [email, password, promo], (err, re)=>{
+    connection.query(`INSERT INTO user_data (email, password, accept_promo) VALUES (${email}, ${password}, ${promo});`, (err, re)=>{
       if(err){
         throw err;
       }
